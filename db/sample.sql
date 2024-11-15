@@ -19,6 +19,7 @@ select * from employee;
 -- GROUP BY 
 --     department_id;
 
+   --psql
     select department_id,sum(salary) from roles group by department_id;
 
 
