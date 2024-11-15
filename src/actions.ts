@@ -170,7 +170,7 @@ export async function addEmployee(){
 //WHEN I choose to update an employee role
 //THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 export async function updateEmployeeRole(){
-    try {
+  
         // Step 1: Fetch the list of employees
         const employeesResult = await pool.query('SELECT id, first_name,last_name FROM employee');
         const employees = employeesResult.rows;
@@ -198,9 +198,9 @@ export async function updateEmployeeRole(){
             }
         ]);
         //const updroleid = answers.roleid;
+        try {
         const updateRoleQuery = `UPDATE employee SET role_id = $1 WHERE id = $2`;
         await pool.query(updateRoleQuery, [roleid, selectedEmployee]);
-
         console.log(green('Employee role updated successfully.'));
     } catch (error) {
         console.error("An error occurred while updating the employee's role:", error);
